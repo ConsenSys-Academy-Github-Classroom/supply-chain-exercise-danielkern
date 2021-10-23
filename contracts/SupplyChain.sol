@@ -3,7 +3,6 @@ pragma solidity >=0.5.16 <0.9.0;
 
 contract SupplyChain {
 
-  address payable private defaultAddr;
   // <owner>
   address public owner;
   // <skuCount>
@@ -101,7 +100,7 @@ contract SupplyChain {
 
   function addItem(string memory _name, uint _price) public returns (bool) {
     // 1. Create a new item and put in array
-    items[skuCount] = Item(_name, skuCount, _price, State.ForSale, msg.sender, defaultAddr); //how to pass a null/empty argument?
+    items[skuCount] = Item(_name, skuCount, _price, State.ForSale, msg.sender, address(0));
     // 3. Emit the appropriate event
     emit LogForSale(skuCount);
     // 2. Increment the skuCount by one
